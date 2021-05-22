@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!--Para adicionar o css criado dps do Bootstrap-->
+    <link rel="stylesheet" href="../../css/intersection.css">
+
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
+
+    <script src="../../js/intersection.js"></script>
+
+
+
+    <title>Intersection</title>
+</head>
+
+<body>
+
+
+    <style>
+        body {
+            background-image: url("../../imgs/bricks.jpg");
+            background-color: #303034;
+        }
+    </style>
+
+
+    <script>
+
+        let contHist = 1;
+        let contOptions = 1;
+        let contSecond = 0;
+
+        let boolContainer1 = false;
+        let boolContainer2 = false;
+
+        //MUDAR A CADA CENA
+        let nextScene = "scene3.html";
+
+        //MUDAR A CADA CENA
+        var respsUserGeral = ['', '“Don’t try to change the subject. You seemed upset the last time you called.”', '“Something funny happened with Amber. You know, the girl with the braces that dated Johnny in the sixth grade.”', '“Yeah, I noticed.”', '“Sure, ‘cause you’re so good with pressure too.”', '“Brooklyn College does have better student success rates, though. And we would have the chance to keep up with Johnny and Amber’s relationship together from the front row. Maybe even attend their wedding."', '“I guess I’ll have to tell it all to you. Can’t wait for the day she proposes to him in the library.”'];
+        var respsUserSecond = ['“Yeah, I noticed.”', '“Sure, ‘cause you’re so good with pressure too.”', '“Brooklyn College does have better student success rates, though. And we would have the chance to keep up with Johnny and Amber’s relationship together from the front row. Maybe even attend their wedding."', '“I guess I’ll have to tell it all to you. Can’t wait for the day she proposes to him in the library.”'];
+
+
+        function onResponsePressed(res, mean, second) {
+
+            let divResp = "resUser" + resp;
+
+            pMean = pMean + mean;
+
+            //Ativa o PNG balão de fala
+            let bubbleID = "buttonChoice" + resp + "_bubble";
+
+            var bubble = document.getElementById(bubbleID);
+            bubble.style.display = "block";
+            console.log("resp" + resp);
+
+            resp++;
+            document.getElementById(divResp).innerHTML = res;
+
+            //second: diz-nos por que tipo de opção secundaria foi chamada (1 - ativa o continuation 1; 2 - ativa o continuation2)
+            if (second == 1) {
+                var continuation = document.getElementById("buttonChoice1_continuation");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+            } else if (second == 2) {
+                var continuation = document.getElementById("buttonChoice2_continuation");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+            }
+
+            if (resp < 3) {
+
+                var continuation = document.getElementById("buttonsChoice1");
+                if (continuation.style.display === "block") {
+                    continuation.style.display = "none";
+                }
+
+                var continuation = document.getElementById("buttonsChoice2");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+
+            }
+
+            document.getElementById("choices1").style.display = "block";
+            document.getElementById("choices2").style.display = "block";
+            if (resp >= 3) {
+                document.getElementById("choices3").style.display = "block";
+                document.getElementById("choices4").style.display = "block";
+                document.getElementById("choices5").style.display = "block";
+                document.getElementById("choices6").style.display = "block";
+            }
+        }
+
+
+        function activateContainer(container) {
+            //container 1 -> caminho 1; container 2 -> caminho 2
+            if (container == 1) {
+                boolContainer1 = true;
+
+                /*if (document.getElementById('resUser2').innerHTML != '') {
+                    boolContainer1 = true;
+                }*/
+
+                buttonChoice1_continuation.style.display = "block";
+                buttonChoice1_1_continuation.style.display = "block";
+
+                var continuation = document.getElementById("buttonsChoice2");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+
+            } else if (container == 2) {
+                boolContainer2 = true;
+
+                /*if (document.getElementById('resUser2').innerHTML != '') {
+                    boolContainer2 = true;
+                }*/
+
+                buttonChoice2_continuation.style.display = "block";
+                buttonChoice1_2_continuation.style.display = "block";
+
+                var continuation = document.getElementById("buttonsChoice3");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+
+            }
+
+        }
+
+
+        let valueResp = 0;
+        function verifyOption(value) {
+            valueResp = value;
+
+            //Verifica se a 1a opção é selecionada
+            if (value == 1) {
+                buttonChoice1_continuation.style.display = "block";
+
+                buttonsChoice2.style.display = "block";
+                buttonsChoice3.style.display = "none";
+
+                //Verifica se a 2a opção é selecionada
+            } else if (value == 2) {
+
+                buttonChoice2_continuation.style.display = "block";
+
+                buttonsChoice2.style.display = "none";
+                buttonsChoice3.style.display = "block";
+            }
+
+        }
+
+
+        function verifyFinal(opcao) {
+
+            //buttonChoice1.style.display = "none";
+
+            if (document.getElementById('resUser2').innerHTML != '') {
+                document.getElementById("nextSceneButton").style.display = "block";
+                document.getElementById("nextSceneButton2").style.display = "block";
+            }
+
+            if (opcao == 1) {
+                buttonsChoice3.style.display = "none";
+                buttonsChoice2.style.display = "block";
+            } else if (opcao == 2) {
+                buttonsChoice2.style.display = "none";
+                buttonsChoice3.style.display = "block";
+                buttonChoice1_2_continuation.style.display = "block";
+            }
+
+        }
+    </script>
+
+
+    <div class="containerStory">
+
+        <div class="row text-center">
+            <div class="col-lg-4">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">The waiter goes away with the orders written down.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center userDialog">
+            <div class="col-lg-12">
+                <p></p>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-5" style="margin-left: 60px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Purple2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">"Anyways… how are things at St.Francis?"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div class="containerbubble" style="margin-bottom: 60px;">
+                    <div>
+                        <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">R: "Pretty shitty, actually. How’s Brooklyn?"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-6"> </div>
+            <div class="col-lg-3" id="choices1" style="display:none">
+                <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                    <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                </button>
+            </div>
+            <div class="col-lg-3" id="choices2" style="display:none">
+                <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                    <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                </button>
+            </div>
+        </div>
+
+        <!--  ----------------------------------           RESPOSTA 1          ------------------------------- -->
+        <div class="row text-center userDialog">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-5" style="margin-left: 60px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Purple2Lines.png"
+                            style="height: auto; width: 100%; margin-top: 60px; display: none;"
+                            id="buttonChoice1_bubble">
+                        <p id="resUser1" class="centeredtextbubble2lines">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ---------------------------------------------------------------------------------------------------->
+
+        <div id="buttonChoice1_continuation" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: "Actually that had nothing to do with college.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">She quickly glances at James, who seems
+                                uncomfortable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">"Oh... But why ‘pretty shitty’ then?”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “You know, with finals and all that, I tend to get
+                                really stressed."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “… And rude.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="buttonChoice2_continuation" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Oh my God! Of course I remember Amber! What
+                                happened?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple4Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">“Apparently they kept dating until pretty recently.
+                                Turns out Johnny only chose going to Brooklyn’s College because of Amber, and now he
+                                doesn’t
+                                even like the program and his grades are truly a mess.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Oh boy… I see where this is going.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">“She made this huge scene in front of the whole
+                                cafeteria to try and convince him to stay-”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Typical Amber.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple4Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">“-even though his parents wanted him to get transferred
+                                as soon as possible. Everything was so fussy and cringe, I’m sure you’d have loved to be
+                                there
+                                to watch all of that. She clearly surpassed herself."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “I can’t tell you how much I miss watching Amber’s
+                                scandals with
+                                you. The amount of times we burst into laugh because of her…"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachel closes her eyes. The years spent at
+                                elementary school go
+                                through her mind as she smiles with the nostalgia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “You, and now Amber’s episodes, of course, almost
+                                make me feel like
+                                St.Francis wasn’t the best option after all.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “You wouldn’t have met me, though.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> You almost forgot that James was there, he clearly
+                                felt excluded. It really was easy to get lost
+                                in Rachel’s presence. There was something about her and your shared past that made
+                                everything
+                                else go away.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble" style="margin-bottom: 100px;">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “That’s a good point.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ESCOLHAS DENTRO DA ESCOLHA 1-->
+        <!-- Ou seja, se o utilizador tiver escolhido a 1a opção, vai ter acesso a esta parte:-->
+        <!-- PRECISO DE CRIAR UMA FUNÇÃO PARA ESTA PARTE - FUNCAO Á PARTE PARA OPÇÕES SECUNDÁRIAS?-->
+        <div id="buttonChoice1_1_continuation" style="display:none">
+
+            <!--    NOTA:  O botao é criado la em baixo-->
+
+            <div class="row text-center">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3" id="choices3" style="display:none">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+                <div class="col-lg-3" id="choices4" style="display:none">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ESCOLHAS DENTRO DA ESCOLHA 2-->
+        <!-- Ou seja, se o utilizador tiver escolhido a 1a opção, vai ter acesso a esta parte:-->
+        <!-- PRECISO DE CRIAR UMA FUNÇÃO PARA ESTA PARTE - FUNCAO Á PARTE PARA OPÇÕES SECUNDÁRIAS?-->
+        <div id="buttonChoice1_2_continuation" style="display:none">
+
+            <!--    NOTA:  O botao é criado la em baixo-->
+
+            <div class="row text-center">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3" id="choices5" style="display:none; margin-bottom: 50px">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+                <div class="col-lg-3" id="choices6" style="display:none;">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--  ----------------------------------           RESPOSTA 2          ------------------------------- -->
+        <div class="row text-center userDialog">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-5" style="margin-left: 60px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Purple4Lines.png"
+                            style="height: auto; width: 100%; margin-top: 40px; margin-bottom: 70px; display: none;"
+                            id="buttonChoice2_bubble">
+                        <p id="resUser2" class="centeredtextbubble2lines">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ---------------------------------------------------------------------------------------------------->
+    </div>
+
+
+    <div class="footermine">
+        <div>
+            <div id="buttonsChoice1" style="display:block">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <script>
+                                let x1 = respsUserGeral[contOptions];
+                            </script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="OnLeftPressed(x1,0), activateContainer(1), verifyOption(1)">
+                                <script>document.write(respsUserGeral[contOptions]); contOptions++</script>
+                            </button>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <script> let x2 = respsUserGeral[contOptions];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="OnRightPressed(x2,0), activateContainer(2), verifyOption(2)">
+                                <script>
+                                    document.write(respsUserGeral[contOptions]);
+                                    contOptions++;
+                                    console.log(contOptions);
+                                </script>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCOES DISPONIVEIS SE ESCOLHER O BOTAO ESQ-->
+            <!-- FAZER O MESMO QUE FIZ COM A SCENE 1 (CHOICE 3, 4)-->
+            <div id="buttonsChoice2" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <script> let y1 = respsUserSecond[contSecond];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="onResponsePressed(y1,0,0), verifyFinal()">
+                                <script> document.write(respsUserSecond[contSecond]); contSecond++</script>
+                            </button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton" type="button" class="btn btn-info w-100"
+                                style="display:none; margin-top: 16px;"
+                                onclick="OnChangeScene(nextScene)">Continue...</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <script> let y2 = respsUserSecond[contSecond];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="onResponsePressed(y2,1,0), verifyFinal()">
+                                <script>
+                                    document.write(respsUserSecond[contSecond]);
+                                    contSecond++;
+                                </script>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- OPCOES DISPONIVEIS SE ESCOLHER O BOTAO DIR-->
+            <div id="buttonsChoice3" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <script> let y3 = respsUserSecond[contSecond];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="onResponsePressed(y3,1,0), verifyFinal()">
+                                <script> document.write(respsUserSecond[contSecond]); contSecond++</script>
+                            </button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton2" type="button" class="btn btn-info w-100"
+                                style="display:none; margin-top: 16px;"
+                                onclick="OnChangeScene(nextScene)">Continue...</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <script> let y4 = respsUserSecond[contSecond];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="onResponsePressed(y4,0,0), verifyFinal()">
+                                <script>
+                                    document.write(respsUserSecond[contSecond]); contSecond++;
+                                </script>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

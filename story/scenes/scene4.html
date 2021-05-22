@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!--Para adicionar o css criado dps do Bootstrap-->
+    <link rel="stylesheet" href="../../css/intersection.css">
+
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
+
+
+
+
+
+    <title>Intersection</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url("../../imgs/bricks.jpg");
+            background-color: #303034;
+        }
+    </style>
+
+    <script>
+        //MUDAR A CADA CENA
+        let nextScene = "sceneAccident.html";
+
+        let pMeanGOTin4 = sessionStorage.getItem("pMeanin3");
+        pMean = pMeanGOTin4;
+        console.log("ENTERED 4 WITH: " + pMean);
+
+        var nameUser = sessionStorage.getItem("nameUserChoice");
+
+
+        var p1 = sessionStorage.getItem("p1Choice");
+        var p2 = sessionStorage.getItem("p2Choice");
+        var p3 = sessionStorage.getItem("p3Choice");
+        console.log(nameUser + " " + p1 + " " + p2 + " " + p3);
+
+
+
+        function Choice1_BTN_Left() {
+            document.getElementById("Choice1_Continuation_Left").style.display = "block";
+            document.getElementById("buttonsChoice1").style.display = "none";
+            document.getElementById("buttonForSceneAccident").style.display = "block";
+        }
+        function Choice1_BTN_Right() {
+            document.getElementById("Choice1_Continuation_Right").style.display = "block";
+            if (pMean == 1) {
+                document.getElementById("Choice1_Continuation_Right_pMean1").style.display = "block";
+                document.getElementById("buttonsChoice1").style.display = "none";
+                document.getElementById("buttonForSceneAccident").style.display = "block";
+            } else if (pMean == 0) {
+                document.getElementById("Choice1_Continuation_Right_pMean0").style.display = "block";
+                document.getElementById("buttonsChoice1").style.display = "none";
+                document.getElementById("buttonForSceneAccident").style.display = "block";
+            }
+        }
+
+
+
+
+
+        function OnChangeScene(changeTo) {
+
+            let stringScene = changeTo + "?pMean=" + pMean;
+            console.log(stringScene);
+            location.replace(stringScene);
+            sessionStorage.setItem("pMean", pMean);
+        }
+
+    </script>
+
+
+    <div class="containerStory">
+
+        <!--  ------------------------  INICIO COMUM A TODOS OS CAMINHOS ------------------------  -->
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">You can hear James breathing in and out. For a few
+                            moments, none of you talk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-5" style="margin-left: 40px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Yellow4Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">J: “At first I hoped I was just imagining things, but three
+                            months into meeting you every week with her is getting me out of excuses.”
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">He looks at you, hoping for any reaction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-5" style="margin-left: 40px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Yellow4Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">J: “Look, I’m not expecting any kind of apology or whatever,
+                            I just want you to be clear with me. Am I seeing things? And please be honest here.”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  ------------------------  Choice 1 - BTN LEFT - Rude Option ------------------------  -->
+        <div id="Choice1_Continuation_Left" style="display:none">
+
+            <div class="row text-center" style="margin-top: 40px;">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>“It would be
+                        pretty bad if you weren’t.”
+                    </button>
+                </div>
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>“You’re not.”
+                    </button>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“It would be pretty bad if you weren’t.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “What...?”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“You know… being blind must be really tough.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Jesus, it’s like I’m dealing with a child here.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">As Rachel comes back form talking with Ricky, James
+                                gets up from his chair and puts some money on the table, covering up everyone’s bill.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Take care,
+                                <script>  document.write(nameUser);</script>. You won’t have to worry with these
+                                meetings anymore.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">He storms out of the café.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Where did he go?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“Apparently there won’t be any more breakfast-meetings.
+                                But at least he payed.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachel rolls her eyes and starts packing all of her
+                                stuff. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Once she has everything in her bag, Rachel leaves
+                                “Intersection” to try and reach James.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passa para a Scene do Acidente-->
+        </div>
+
+
+        <!--  ------------------------  Choice 1 - BTN RIGHT - Nice Option ------------------------  -->
+        <div id="Choice1_Continuation_Right" style="display:none">
+            <div class="row text-center" style="margin-top: 40px;">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>“It would be
+                        pretty bad if you weren’t.”
+                    </button>
+                </div>
+                <div class="col-lg-3">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>“You’re not.”
+                    </button>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“You’re not.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">At first, James doesn’t know what to say. He isn’t
+                                surprised, but having it confirmed hits him like a punch in the stomach. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “I… thank you, I guess. For being honest, I mean.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“Right...”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Look… What you guys have is clearly really special.
+                                But... it’s a friendship.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“I don’t need you to tell me that, you know?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow4Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “I kind of think I do, though. Rachel’s awesome and
+                                she wouldn’t do anything to hurt you, but I know she’s aware of your feelings for her
+                                and I think you need to get them sorted out with her. Otherwise, this will just get
+                                weird.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continuação depende do pMean -->
+        </div>
+
+
+        <!--  ------------------------  Continuation of Right Button if pMean = 1 ------------------------  -->
+        <div id="Choice1_Continuation_Right_pMean1" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“Whatever dude, just keep your advice to yourself,
+                                okay?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “We’re DATING, dude. Are you expecting her to ride
+                                with you into the sunset?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Once again, James waits for some kind of reaction,
+                                but you don’t seem to cooperate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachels arrives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Ricky tried-”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “I’m seriously so done with
+                                <script> document.write(p2);</script>.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Jeez, cool down, James.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “You didn’t even… Nevermind, see you later, Rach.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">He storms out of the café.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Wait! Dont you walk away like that James!”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachel tries to pack all her stuff, as fast as
+                                possible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Once she has everything in her bag, Rachel leaves
+                                “Intersection” to try and reach James.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passa para a Scene do Acidente -->
+        </div>
+
+        <!--  ------------------------  Continuation of Right Button if pMean = 0 ------------------------  -->
+        <div id="Choice1_Continuation_Right_pMean0" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“You’re taking this surprisingly well.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “There’s not much I can do, is there?"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“I’m going to talk with her... eventually.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">James tries to look neutral, keeping his head cool
+                                to try and deal with what’s going on in the best way possible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Yeah, you really should. But hey, I don’t judge you.
+                                I get it, she’s... Rachel.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachels arrives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Ricky tried to call you, babe.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Me? How? What’s wrong?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Because of the match thingy. He asked me for your
+                                number a few days ago, but I didn’t expect him to actually call you."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png"
+                                style="height: auto; width: 100%; margin-top: 60px; display: block;"
+                                id="buttonChoice1_bubble">
+                            <p class="centeredtextbubble2lines">“Damn, he’s really invested on you going.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">James starts looking for his phone in his pockets.
+                                Rachel's happy, after seeing how much James and Ricky get along.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “Crap, I must have left it in the seat of the car.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Don’t worry, we can check it in a minute. I told him
+                                you’d love to go.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “It’s in a pretty visible spot. Someone can break the
+                                window to grab it. I’ll be right back.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Wait, I can go with you!”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachel tries to pack all her stuff, as fast as
+                                possible, she sees that James is worried.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Green2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Once she has everything in her bag, Rachel leaves
+                                “Intersection” to try and reach James.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passa para a Scene do Acidente -->
+        </div>
+    </div>
+
+
+    <div class="footermine">
+        <div class="text-center">
+
+            <div id="buttonsChoice1" style="display:block">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-primary w-100" onclick="Choice1_BTN_Left()">
+                                “It would be pretty bad if you weren’t.”
+                            </button>
+                        </div>
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <button type="button" class="btn btn-primary w-100" onclick="Choice1_BTN_Right()">
+                                “You’re not.”
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="buttonForSceneAccident" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton2" type="button" class="btn btn-info w-100"
+                                style="margin-top: 16px;" onclick="OnChangeScene(nextScene)">Continue...</button>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!--Para adicionar o css criado dps do Bootstrap-->
+    <link rel="stylesheet" href="../../css/intersection.css">
+
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
+
+    <script src="../../js/intersection.js"></script>
+
+
+
+    <title>Intersection</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url("../../imgs/asphalt.jpg");
+            background-color: #303034;
+        }
+    </style>
+
+
+    <script>
+        let timesEndingHTML = sessionStorage.getItem("timesEnding");
+
+        //timesEndingHTML++;
+
+        if (timesEndingHTML == 3) {
+            document.getElementById("nextSceneButton").style.display = "block";
+        }
+        console.log("T_E " + timesEndingHTML);
+
+
+        let contHist = 1;
+        let contOptions = 1;
+        let contSecond = 0;
+
+        let boolContainer1 = false;
+        let boolContainer2 = false;
+
+        //MUDAR A CADA CENA
+        let nextScene = "scene1_2.html";
+
+        //MUDAR A CADA CENA
+        var respsUserGeral = ['', '... stop her.', '... let her go.', ''];
+        var respsUserSecond = [''];
+
+
+        function onResponsePressed(res, mean, second) {
+
+            let timeschanged = true;
+            sessionStorage.setItem("timeschanged", timeschanged);
+
+            let divResp = "resUser" + resp;
+
+            pMean = pMean + mean;
+
+            //Ativa o PNG balão de fala
+            let bubbleID = "buttonChoice" + resp + "_bubble";
+
+            var bubble = document.getElementById(bubbleID);
+            bubble.style.display = "block";
+            console.log("resp" + resp);
+
+            resp++;
+            document.getElementById(divResp).innerHTML = res;
+
+            //second: diz-nos por que tipo de opção secundaria foi chamada (1 - ativa o continuation 1; 2 - ativa o continuation2)
+            if (second == 1) {
+                var continuation = document.getElementById("buttonChoice1_continuation");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+            } else if (second == 2) {
+                var continuation = document.getElementById("buttonChoice2_continuation");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+            }
+
+
+
+            document.getElementById("choices1").style.display = "block";
+            document.getElementById("choices2").style.display = "block";
+
+
+            document.getElementById("buttonsChoice2").style.display = "block";
+        }
+
+        function activateContainer(container) {
+            //container 1 -> caminho 1; container 2 -> caminho 2
+            if (container == 1) {
+                boolContainer1 = true;
+
+                buttonChoice1_continuation.style.display = "block";
+                buttonChoice1_1_continuation.style.display = "block";
+
+                var continuation = document.getElementById("buttonsChoice2");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+
+            } else if (container == 2) {
+                boolContainer2 = true;
+
+                buttonChoice2_continuation.style.display = "block";
+                buttonChoice1_2_continuation.style.display = "block";
+
+                var continuation = document.getElementById("buttonsChoice2");
+                if (continuation.style.display === "none") {
+                    continuation.style.display = "block";
+                }
+
+            }
+
+        }
+    </script>
+
+
+    <div class="containerStory">
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">James is way ahead of you and Rachel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">She starts running to catch up and you go after her.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">A few people bump into him as he gets to the
+                            intersection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">You’re getting closer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">He’s checking his pockets while walking faster than
+                            ever so, without even looking, he starts crossing the street.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">R: “The light isn’t…”
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">Both you and Rachel get to the crosswalk.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">Suddenly, a loud noise of skidding tires starts coming
+                            from your left, a little bit to the front.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-6">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                        <p class="centeredtextbubble2lines">R: “JAMES!”
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">He raises his head, as if only now he realizes what
+                            he’s doing and where he’s at.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">Without even thinking, Rachel starts running to push
+                            James away from the motorcycle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10" style="margin-bottom: 20px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">You…</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-3"> </div>
+            <div class="col-lg-3" id="choices1" style="display:none">
+                <button type="button" class="btn btn-danger w-100 choices pastchoices" disabled>
+                    <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                </button>
+            </div>
+            <div class="col-lg-3" id="choices2" style="display:none">
+                <button type="button" class="btn btn-danger w-100 choices pastchoices" disabled>
+                    <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                </button>
+            </div>
+        </div>
+
+        <!--  ----------------------------------           RESPOSTA 1          ------------------------------- -->
+        <div class="row text-center userDialog">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-5" style="margin-left: 40px; margin-top: 10px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png"
+                            style="height: auto; width: 100%; margin-top: 20px; display: none;"
+                            id="buttonChoice1_bubble">
+                        <p id="resUser1" class="centerednarrationbubble2lines">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ---------------------------------------------------------------------------------------------------->
+
+        <div id="buttonChoice1_continuation" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">With all the will to leave her out of that
+                                situation, you grab her arm and pull her so hard to you that the both of you almost
+                                fall, but there’s no way to get your eyes off what’s happening right in front of you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Time seems to go by slowly as the motorcycle shocks
+                                with the left side of his body. The impact makes him hit his head a few times before he
+                                lands on the ground, inert.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Rachel stares in shock for a few seconds, while her
+                                eyes fill up with tears as if they were already wanting to pour.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">She frees herself from your arms, which were still
+                                holding her, and runs to him. Her hands are shaking and in conflict whether to touch his
+                                body or not.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Your eyes meet.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “Why would you stop me?”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> Her voice sounds more like a breaking whisper, but
+                                you’re close enough to understand.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “I could have saved him...”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> A crowd starts to gadder. You don’t even check on
+                                the driver, the image of Rachel staring at you right beside his body freezes you
+                                completely.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “I…”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You hear someone calling 911 while others just look
+                                and stare.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Orange2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">R: “I can never forgive you for this.”
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You chose to save her, but in that moment, you knew
+                                you lost her.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">“There’s no way I can allow this to happen.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You know what to do.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="buttonChoice2_continuation" style="display:none">
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">As soon as he’s at her reach, she pulls him
+                                hard, out of the way, without having the time to leave the place herself.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You try to scream her name but make no sound.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">Everything goes black as you close your eyes,
+                                instinctively.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You hear a voice screaming her name a couple
+                                times in an increasingly desperate way, but that was definitely not you.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">All you could do was stand there and witness
+                                her last breath being taken away. That and keep your eyes shut. That’s all you seem
+                                to be able to do for now.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">After all, this moment was the moment when you
+                                took the turn to watch your love leave life as you know it.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> When you find the courage to open your eyes, a
+                                hand twists your shirt and brings you closer to his face. A green pair of eyes
+                                stares down at you, angrily, wanting to tear you apart.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-5" style="margin-left: 40px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Yellow2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">J: “WHY DIDN’T YOU STOP HER? YOU COULD HAVE SAVED
+                                HER!”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">He didn’t mean what he said. Right? How could
+                                he even know that? He wasn’t even looking.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> The veins on his neck relax a little bit as he
+                                burst into tears. He lets go of your shirt and gets on his knees, there’s not enough
+                                strength to keep him up.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines"> By this time, you’re surrounded by multiple
+                                strangers and you realize you can’t see her. That was it, she’s gone.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row text-center">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-lg-5" style="margin-left: 60px;">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Purple2Lines.png" style="height: auto; width: 100%;">
+                            <p class="centeredtextbubble2lines">“There’s no way I can allow this to happen.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You know what to do.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ESCOLHAS DENTRO DA ESCOLHA 1-->
+        <!-- Ou seja, se o utilizador tiver escolhido a 1a opção, vai ter acesso a esta parte:-->
+        <!-- PRECISO DE CRIAR UMA FUNÇÃO PARA ESTA PARTE - FUNCAO Á PARTE PARA OPÇÕES SECUNDÁRIAS?-->
+        <div id="buttonChoice1_1_continuation" style="display:none">
+
+            <!--    NOTA:  O botao é criado la em baixo-->
+
+            <div class="row text-center">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3" id="choices3" style="display:none">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+                <div class="col-lg-3" id="choices4" style="display:none">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ESCOLHAS DENTRO DA ESCOLHA 2-->
+        <!-- Ou seja, se o utilizador tiver escolhido a 1a opção, vai ter acesso a esta parte:-->
+        <!-- PRECISO DE CRIAR UMA FUNÇÃO PARA ESTA PARTE - FUNCAO Á PARTE PARA OPÇÕES SECUNDÁRIAS?-->
+        <div id="buttonChoice1_2_continuation" style="display:none">
+
+            <!--    NOTA:  O botao é criado la em baixo-->
+
+            <div class="row text-center">
+                <div class="col-lg-6"> </div>
+                <div class="col-lg-3" id="choices5" style="display:none; margin-bottom: 50px">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+                <div class="col-lg-3" id="choices6" style="display:none;">
+                    <button type="button" class="btn btn-secundary w-100 choices pastchoices" disabled>
+                        <script> document.write(respsUserGeral[contHist]); contHist++</script>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--  ----------------------------------           RESPOSTA 2          ------------------------------- -->
+        <div class="row text-center userDialog">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-5" style="margin-left: 60px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Purple4Lines.png"
+                            style="height: auto; width: 100%; margin-top: 40px; margin-bottom: 70px; display: none;"
+                            id="buttonChoice2_bubble">
+                        <p id="resUser2" class="centeredtextbubble2lines">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  ---------------------------------------------------------------------------------------------------->
+    </div>
+
+
+    <div class="footermine">
+        <div>
+            <div id="buttonsChoice1" style="display:block">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                            <script>
+                                let x1 = respsUserGeral[contOptions];
+                            </script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="OnLeftPressed(x1,0), activateContainer(1)">
+                                <script>document.write(respsUserGeral[contOptions]); contOptions++</script>
+                            </button>
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton" type="button" class="btn btn-primary w-100"
+                                style="display:none; margin-top: 16px;" onclick="OnChangeScene(nextScene)">Do it
+                                yourself.</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <script> let x2 = respsUserGeral[contOptions];</script>
+                            <button type="button" class="btn btn-primary w-100"
+                                onclick="OnRightPressed(x2,0), activateContainer(2)">
+                                <script>
+                                    document.write(respsUserGeral[contOptions]);
+                                    contOptions++;
+                                    console.log(contOptions);
+                                </script>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttonsChoice2" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton2" type="button" class="btn btn-primary w-100"
+                                style="margin-top: 16px;" onclick="OnChangeScene(nextScene)">Try again.</button>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
