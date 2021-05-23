@@ -27,6 +27,16 @@
 </head>
 
 <body>
+    <script>
+
+        function OnChangeSceneIn(changeTo) {
+            /*let stringScene = changeTo + "?pMean=" + pMean;
+            console.log(stringScene);
+            location.replace(stringScene);*/
+            top.window.location.href = "../../index.html" + "?pMean=" + pMean;
+            sessionStorage.setItem("pMean", pMean);
+        }
+    </script>
     <style>
         body {
             background-color: #000000 !important;
@@ -42,7 +52,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton" type="button" class="btn btn-primary w-100"
-                                style="margin-top: 16px;" onclick="OnChangeScene('../../index.html')">HOME</button>
+                                style="margin-top: 16px;" onclick="OnChangeSceneIn('../../index.html')">HOME</button>
                         </div>
                         <div class="col-lg-4">
                         </div>

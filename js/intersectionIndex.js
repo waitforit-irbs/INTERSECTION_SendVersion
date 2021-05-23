@@ -134,7 +134,7 @@ function userData() {
 
     if (nameUser != '') {
         let stringScene;
-        stringScene = "story/base.html?p1="+p1+"&p2="+p2+"&nome="+nameUser;
+        stringScene = "story/baseScene0.html?p1="+p1+"&p2="+p2+"&nome="+nameUser;
         console.log(stringScene);
         window.location.replace(stringScene);
     } else {

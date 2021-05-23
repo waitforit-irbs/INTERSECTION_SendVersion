@@ -125,10 +125,18 @@
                 if (continuation.style.display === "none") {
                     continuation.style.display = "block";
                 }
-
             }
-
         }
+
+                
+        function OnChangeSceneIn(changeTo) {
+            /*let stringScene = changeTo + "?pMean=" + pMean;
+            console.log(stringScene);
+            location.replace(stringScene);*/
+            top.window.location.href = "../base_1.html"+"?pMean="+pMean;
+            sessionStorage.setItem("pMean", pMean);
+        }
+
     </script>
 
 
@@ -830,7 +838,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton" type="button" class="btn btn-primary w-100"
-                                style="display:none; margin-top: 16px;" onclick="OnChangeScene(nextScene)">Do it
+                                style="display:none; margin-top: 16px;" onclick="OnChangeScene('THE_END.html')">Do it
                                 yourself.</button>
                         </div>
                         <div class="col-lg-4">
@@ -854,7 +862,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton2" type="button" class="btn btn-primary w-100"
-                                style="margin-top: 16px;" onclick="OnChangeScene(nextScene)">Try again.</button>
+                                style="margin-top: 16px;" onclick="OnChangeSceneIn(nextScene)">Try again.</button>
                         </div>
                         <div class="col-lg-4">
                         </div>

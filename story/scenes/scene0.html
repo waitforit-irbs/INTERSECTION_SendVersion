@@ -38,6 +38,12 @@
             document.getElementById("buttonsChoice2").style.display = "block";
         }
 
+        function OnChangeBase() {
+            top.window.location.href = "../base.html"+"?pMean="+pMean;
+            sessionStorage.setItem("pMean", pMean);
+            pMean = 0;
+        }
+
     </script>
 
     <div class="containerStory">
@@ -142,7 +148,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton2" type="button" class="btn btn-primary w-100"
-                                style="margin-top: 16px;" onclick="OnChangeScene('scene1.html')">Try again.</button>
+                                style="margin-top: 16px;" onclick="OnChangeBase()">Try again.</button>
                         </div>
                         <div class="col-lg-4">
                         </div>

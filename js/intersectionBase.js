@@ -14,7 +14,7 @@ function obterResposta() {
     console.log("Resp:" + compRes);
 }
 
-/* ??????????? HÁ A NECESSIDADE DE HAVER DUAS FUNÇÕES DISTINTAS, SENDO QUE FAZEM O MSM? */
+
 let OnLeftPressed = function (res, mean, second) {
 
     let divResp = "resUser" + resp;

@@ -54,7 +54,7 @@
         let boolContainer2 = false;
 
         //MUDAR A CADA CENA
-        let nextScene = "scene1.html";
+        let nextScene = "scene1_2.html";
 
         //MUDAR A CADA CENA
         var respsUserGeral = ['', '... stop her.', '... let her go.', ''];
@@ -125,9 +125,15 @@
                 if (continuation.style.display === "none") {
                     continuation.style.display = "block";
                 }
-
             }
+        }
 
+        function OnChangeSceneIn(changeTo) {
+            /*let stringScene = changeTo + "?pMean=" + pMean;
+            console.log(stringScene);
+            location.replace(stringScene);*/
+            top.window.location.href = "../BaseSceneEnd.html" + "?pMean=" + pMean;
+            sessionStorage.setItem("pMean", pMean);
         }
     </script>
 
@@ -717,7 +723,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row text-center">
                 <div class="col-lg-6">
                 </div>
@@ -830,7 +836,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton" type="button" class="btn btn-primary w-100"
-                                style="margin-top: 16px;" onclick="OnChangeScene('THE_END.html')">Do it
+                                style="display:block; margin-top: 16px;" onclick="OnChangeSceneIn()">Do it
                                 yourself.</button>
                         </div>
                         <div class="col-lg-4">
@@ -843,6 +849,20 @@
                                     console.log(contOptions);
                                 </script>
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttonsChoice2" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton2" type="button" class="btn btn-primary w-100"
+                                style="margin-top: 16px;" onclick="OnChangeScene(nextScene)">Try again.</button>
+                        </div>
+                        <div class="col-lg-4">
                         </div>
                     </div>
                 </div>

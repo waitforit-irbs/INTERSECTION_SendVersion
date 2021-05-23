@@ -75,10 +75,10 @@
 
 
         function OnChangeScene(changeTo) {
-
-            let stringScene = changeTo + "?pMean=" + pMean;
+            /*let stringScene = changeTo + "?pMean=" + pMean;
             console.log(stringScene);
-            location.replace(stringScene);
+            location.replace(stringScene);*/
+            top.window.location.href = "../baseSceneA_1.html"+"?pMean="+pMean;
             sessionStorage.setItem("pMean", pMean);
         }
 

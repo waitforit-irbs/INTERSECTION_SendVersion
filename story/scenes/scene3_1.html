@@ -86,6 +86,14 @@
             location.replace(stringScene);
             sessionStorage.setItem("pMeanin3", pMean);
         }
+                
+        function OnChangeSceneIn(changeTo) {
+            /*let stringScene = changeTo + "?pMean=" + pMean;
+            console.log(stringScene);
+            location.replace(stringScene);*/
+            top.window.location.href = "../baseSceneA_1.html" + "?pMean=" + pMean;
+            sessionStorage.setItem("pMean", pMean);
+        }
 
     </script>
 
@@ -1448,7 +1456,7 @@
                         </div>
                         <div class="col-lg-4">
                             <button id="nextSceneButton2" type="button" class="btn btn-info w-100"
-                                style="margin-top: 16px;" onclick="OnChangeScene(nextScene)">Continue...</button>
+                                style="margin-top: 16px;" onclick="OnChangeSceneIn(nextScene)">Continue...</button>
                         </div>
                         <div class="col-lg-4">
                         </div>
