@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
 
     <script src="../../js/intersection.js"></script>
-    
+
     <title>Intersection</title>
 </head>
 
@@ -31,6 +31,90 @@
         }
     </style>
 
+    <script>
+        function PlayerClicked() {
+            document.getElementById("AfterButtonClick").style.display = "block";
+            document.getElementById("buttonsChoice1").style.display = "none";
+            document.getElementById("buttonsChoice2").style.display = "block";
+        }
+
+    </script>
+
+    <div class="containerStory">
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">He raises his head, as if only now he realizes what
+                            he’s doing and where he’s at.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">Without even thinking, Rachel starts running to push
+                            James away from the motorcycle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-lg-1">
+            </div>
+            <div class="col-lg-10" style="margin-bottom: 20px;">
+                <div class="containerbubble">
+                    <div>
+                        <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                        <p class="centerednarrationbubble2lines">You…</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  ------------------------  Choice 1 - BTN LEFT - pMean=1 ------------------------  -->
+        <div id="AfterButtonClick" style="display:none">
+
+            <div class="row text-center">
+                <div class="col-lg-3"> </div>
+                <div class="col-lg-3" id="choices1" style="display:none">
+                    <button type="button" class="btn btn-danger w-100 choices pastchoices" disabled>
+                        STOP HER
+                    </button>
+                </div>
+                <div class="col-lg-3" id="choices2" style="display:none">
+                    <button type="button" class="btn btn-danger w-100 choices pastchoices" disabled>
+                        LET HER GO
+                    </button>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <div class="containerbubble">
+                        <div>
+                            <img src="../../imgs/Black3Lines.png" style="height: auto; width: 100%;">
+                            <p class="centerednarrationbubble2lines">You know what to do.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="footermine">
         <div>
             <div id="buttonsChoice1" style="display:block">
@@ -39,20 +123,36 @@
                         <div class="col-lg-2">
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-primary w-100" onclick="OnChangeScene('scene1.html')">
+                            <button type="button" class="btn btn-primary w-100" onclick="PlayerClicked()">
                                 STOP HER
                             </button>
                         </div>
                         <div class="col-lg-4">
-                            <button type="button" class="btn btn-primary w-100" onclick="OnChangeScene('scene1.html')">
+                            <button type="button" class="btn btn-primary w-100" onclick="PlayerClicked()">
                                 LET HER GO
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="buttonsChoice2" style="display:none">
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
+                            <button id="nextSceneButton2" type="button" class="btn btn-primary w-100"
+                                style="margin-top: 16px;" onclick="OnChangeScene('scene1.html')">Try again.</button>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
